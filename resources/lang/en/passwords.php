@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'reset' => 'Your password has been reset!',
-    'sent' => 'We have emailed your password reset link!',
-    'throttled' => 'Please wait before retrying.',
-    'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that email address.",
+    'reset' => 'Mật khẩu đã được thay đổi!',
+    'sent' => 'Vui lòng kiểm tra email để reset lại mật khẩu!',
+    'throttled' => 'Vui lòng đợi trước khi thử lại.',
+    'token' => 'Mã token không hợp lệ. Vui lòng kiểm tra lại đường dẫn.',
+    'user' => "Địa chỉ email không tồn tại.",
 
 ];

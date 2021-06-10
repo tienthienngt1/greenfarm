@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Auth\MoreRegisterController;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -86,6 +87,7 @@ class RegisterController extends Controller
         // Create more
         $this->createMore($user);
 
+	Session::flash('success','Đăng kí thành công!');
         return $user;
     }
 }

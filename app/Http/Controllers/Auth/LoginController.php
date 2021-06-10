@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Session;
 
 class LoginController extends Controller
 {
@@ -46,7 +47,9 @@ class LoginController extends Controller
             throw ValidationException::withMessages([
                 'email' => 'Tài khoản bị khóa',
             ]);
-        }
+	}else{
+	    Session::flash('success','Đăng nhập thành công!');
+	}
     }
 
     protected function sendFailedLoginResponse(Request $request)
