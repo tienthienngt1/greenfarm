@@ -29,6 +29,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::resource('/thong-ke-thu-nhap', '\App\Http\Controllers\Personal\ProfitController')->only(['index', 'store']);
     Route::resource('/lich-su-giao-dich', '\App\Http\Controllers\Personal\HistoryController')->only(['index', 'store']);
     Route::resource('/doi-mat-khau', '\App\Http\Controllers\Personal\ChangePasswordController')->only(['index', 'store']);
+    Route::resource('/kich-hoat-tai-khoan', '\App\Http\Controllers\Personal\VerificationController')->only(['index', 'store']);
   });
 
   // tien trinh

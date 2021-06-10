@@ -98,9 +98,17 @@ class PersonalController extends Controller
 
     public function withdraw($request)
     {
+        if(!\Auth::user()->email_verified_at){
+            Session::flash('error','Tài khoản chưa kích hoạt. Xin mời kích hoạt!');
+            return;
+        }
+        if(!\Auth::user()->info->stk){
+            Session::flash('error','Bạn chưa cập nhật thông tin!');
+            return;
+        }
         $getMoney = DB::table('moneys')->where('user_id', \Auth::user()->id)->first();
  
-        if((int)$request->money < 100){
+        if((int)$request->money < 100000){
             Session::flash('error',' Số tiền rút phải lớn hơn 100.000đ!');
             return;
         }

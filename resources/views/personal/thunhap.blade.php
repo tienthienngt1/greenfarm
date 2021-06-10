@@ -18,38 +18,38 @@
 <div class="general-radius-sm shadow p-1 mb-3 row align-items-center justify-content-center">
     <div class="col-3 general-radius-sm shadow m-3 p-1">
         <center>
-            <h3>Số Dư</h3>
-            <h2 style="color:orangered">{{number_format($money->balance)}}đ</h2>
+            <h5>Số Dư</h5>
+            <h4 style="color:orangered">{{number_format($money->balance)}}đ</h4>
         </center>
     </div>
     <div class="col-3 general-radius-sm shadow m-3 p-1">
         <center>
-            <h3>Tổng Nạp</h3>
-            <h2 style="color:orangered">{{number_format($money->deposit)}}đ</h2>
+            <h5>Tổng Nạp</h5>
+            <h4 style="color:orangered">{{number_format($money->deposit)}}đ</h4>
         </center>
     </div>
     <div class="col-3 general-radius-sm shadow m-3 p-1">
         <center>
-            <h3>Lợi Nhuận</h3>
-            <h2 style="color:orangered">{{number_format($money->deposit + ($money->refferal)*2 - $money->balance - $money->pending - $money->withdraw)}}đ</h2>
+            <h5>Lợi Nhuận</h5>
+            <h4 style="color:orangered">{{number_format($money->deposit + ($money->refferal)*2 - $money->balance - $money->pending - $money->withdraw)}}đ</h4>
         </center>
     </div>  
     <div class="col-3 general-radius-sm shadow m-3 p-1">
         <center>
-            <h3>Giới Thiệu</h3>
-            <h2 style="color:orangered">{{number_format($money->refferal)}}đ</h2>
+            <h5>Giới Thiệu</h5>
+            <h4 style="color:orangered">{{number_format($money->refferal)}}đ</h4>
         </center>
     </div>
     <div class="col-3 general-radius-sm shadow m-3 p-1">
         <center>
-            <h3>Đang rút</h3>
-            <h2 style="color:red">{{number_format($money->pending)}}đ</h2>
+            <h5>Đang rút</h5>
+            <h4 style="color:red">{{number_format($money->pending)}}đ</h4>
         </center>
     </div>
     <div class="col-3 general-radius-sm shadow m-3 p-1">
         <center>
-            <h3>Đã rút</h3>
-            <h2 style="color:green">{{number_format($money->withdraw)}}đ</h2>
+            <h5>Đã rút</h5>
+            <h4 style="color:green">{{number_format($money->withdraw)}}đ</h4>
         </center>
     </div>
 </div>

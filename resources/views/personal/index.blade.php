@@ -22,9 +22,15 @@
                 <p>
                     Mã giới thiệu: {{$user->refferal->refferal}}
                 </p>
-                <span style="color:red">
-                    * Tài khoản chưa kích hoạt <a class="btn btn-outline-dark" href="/ca-nhan/kich-hoat-tai-khoan">Kích hoạt ngay</a>
+                @if($user->email_verified_at)
+                <span style="color:green">
+                <i class="fas fa-check-square"></i> Đã kích hoạt
                 </span>
+                @else
+                <span style="color:red">
+                    * Tài khoản chưa kích hoạt <a class="btn btn-outline-orange" href="/ca-nhan/kich-hoat-tai-khoan">Kích hoạt ngay</a>
+                </span>
+                @endif
             </div>
         </div>
         <!-- deposit -->
