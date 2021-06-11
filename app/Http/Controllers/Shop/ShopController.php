@@ -194,7 +194,7 @@ class ShopController extends Controller
             //get balance
             $balance = Money::find($user_ref_2)->balance;
             $refferal = Money::find($user_ref_2)->refferal;
-            $money = round($time*$profit*0.1);
+            $money = round($time*$profit*0.05);
             // update db
             Money::where('id',$user_ref_2)->update([
                 'balance' => $balance + $money,

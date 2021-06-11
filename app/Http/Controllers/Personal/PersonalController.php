@@ -51,6 +51,11 @@ class PersonalController extends Controller
     public function store(Request $request)
     {
         if (isset($_POST['paying'])) {
+            //check money
+            if($request->money < 85688){
+                Session::flash('error', 'Số tiền nạp ít nhất là 85.688đ!');
+                return back();
+            }
             // check is_image
             if (!$request->hasFile('image')) {
                 Session::flash('error', 'Bạn chưa chọn ảnh!');
