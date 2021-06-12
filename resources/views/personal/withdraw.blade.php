@@ -79,13 +79,14 @@
                     <th scope="row">{{ $stt }}</th>
                     <th scope="row">{{$withdraw -> hash}}</th>
                     @if($withdraw -> status == 0)
-
                     <th scope="row" style="color:red">{{number_format($withdraw -> money)}}đ</th>
                     <th scope="row" style="color:red">Đang chờ</th>
+                    @elseif($withdraw -> status == 2)
+                    <th scope="row" style="color:red">{{number_format($withdraw -> money)}}đ</th>
+                    <th scope="row" style="color:red">Thất bại</th>
                     @else
                     <th scope="row" style="color:green">{{number_format($withdraw -> money)}}đ</th>
                     <th scope="row" style="color:green">Hoàn thành</th>
-
                     @endif
                     <th scope="row">{{ $withdraw -> created_at }}</th>
                     @php $stt++; @endphp

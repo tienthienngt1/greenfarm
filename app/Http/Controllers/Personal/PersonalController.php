@@ -76,13 +76,13 @@ class PersonalController extends Controller
                 return back();
             }
             // save image into public
-            $request->file('image')->move('images/deposit', $nameImage, 'local');
+            $request->file('image')->move('images/deposit/', $nameImage, 'local');
             // create to database
             Deposit::create([
                 'user_id' => \Auth::user()->id,
                 'money' => $request->money,
                 'hash' => sha1(rand(11111111, 9999999999)),
-                'image' => 'images/deposit' . $nameImage,
+                'image' => 'images/deposit/' . $nameImage,
                 'status' => 0,
             ]);
             // forget Cache
@@ -107,10 +107,11 @@ class PersonalController extends Controller
             Session::flash('error','Tài khoản chưa kích hoạt. Xin mời kích hoạt!');
             return;
         }
-        if(!\Auth::user()->info->stk){
+        if(!\Auth::user()->info){
             Session::flash('error','Bạn chưa cập nhật thông tin!');
             return;
         }
+        
         $getMoney = DB::table('moneys')->where('user_id', \Auth::user()->id)->first();
  
         if((int)$request->money < 100000){

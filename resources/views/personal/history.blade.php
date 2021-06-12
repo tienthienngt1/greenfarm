@@ -56,7 +56,15 @@
                     <th scope="row">{{ $stt }}</th>
                     <th scope="row">{{$deposit -> hash}}</th>
                     <th scope="row" style="color:red">+{{$deposit -> money}}đ</th>
-                    <th scope="row"  style="color:red">Đang thực hiện</th>
+                    <th scope="row">
+                    @if($deposit -> status == 0)
+                    <span style="color:red">Đang xử lý</span>
+                    @elseif($deposit -> status == 1)
+                    <span style="color:green">Hoàn thành</span>
+                    @else
+                    <span style="color:red">Thất bại</span>
+                    @endif
+                    </th>
                     <th scope="row">{{ $deposit -> created_at }}</th>
                     @php $stt++; @endphp
                 </tr>

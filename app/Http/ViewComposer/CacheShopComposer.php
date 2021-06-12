@@ -18,7 +18,6 @@ class CacheShopComposer
     public function __construct()
     {
         if (\Auth::check()) {
-            $this->usersCache();
             $this->shop = $this->shopCache();
         }
     }
