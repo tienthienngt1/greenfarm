@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Personal;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Cache;
+use App\Cache\CacheController;
 
 class HistoryController extends Controller
 {
+    use CacheController;
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +16,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $deposits = Cache::get('deposits',null);
+        $deposits = $this->userRelationCache('deposits');
         if(isset($_GET['action']) && $_GET['action'] == 'success'){
             return view('personal.history.success',[
                 'deposits' => $deposits

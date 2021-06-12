@@ -18,6 +18,7 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
+                        <th scope="col">USER_ID</th>
                         <th scope="col">EMAIL</th>
                         <th scope="col">NAME</th>
                         <th scope="col">MONEY</th>
@@ -37,9 +38,10 @@
                     @foreach($deposits->forPage($pageUser, 100) as $deposit)
                     <tr>
                         <td>{{$deposit -> id}}</td>
+                        <td>{{$deposit -> user_id}}</td>
                         <td>{{$deposit -> user->email}}</td>
                         <td>{{$deposit -> user->name}}</td>
-                        <td>{{$deposit -> money}}</td>
+                        <td>{{number_format($deposit -> money)}}đ</td>
                         <td>{{$deposit -> hash}}</td>
                         <td><img src="{{ asset($deposit->image) }}" width="100%"></td>
                         <td>

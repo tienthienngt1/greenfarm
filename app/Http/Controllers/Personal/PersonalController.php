@@ -39,6 +39,8 @@ class PersonalController extends Controller
         }
         return view('personal.index', [
             'users' => $user,
+            'moneys' => $this->userRelationCache('moneys'),
+            'feedings' => $this->userRelationCache('feedings')
         ]);
     }
 

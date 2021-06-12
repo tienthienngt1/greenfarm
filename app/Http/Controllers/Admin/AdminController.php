@@ -75,6 +75,22 @@ class AdminController extends Controller
         if(isset($request->searchEmail)){
             return $this->searchEmail($request);
         }
+        if(isset($request->addnotifi)){
+            return $this->addnotifi($request);
+        }
+    }
+
+    //  ADD NOTIFIBUY
+    public function addnotifi($request){
+        DB::table('notifibuys')->insert([
+            'name' => $request->name,
+            'animal' => $request->animal,
+        ]);
+        //forget Cache
+        $this->forgetCache('notifibuys');
+        $this->usersCache();
+        Session::flash('success','ok');
+        return back();
     }
 
     // SEARCH EMAIL
@@ -147,9 +163,13 @@ class AdminController extends Controller
 
     //CHAP NHAN
     public function chapnhan($request){
+        //get Balance DB
+        $getUser = DB::table('moneys')->where('user_id', $request->user_id)->first();
+        $balance = $getUser->balance;
+        $deposit = $getUser->deposit;
         DB::table('moneys')->where('user_id', $request->user_id)->update([
-            'balance' => \Auth::user()->money->balance + $request->money,
-            'deposit' => \Auth::user()->money->deposit + $request->money,
+            'balance' => $balance + $request->money,
+            'deposit' => $deposit + $request->money,
         ]);
         
         DB::table('deposits')->where('id', $request->_id)->update([

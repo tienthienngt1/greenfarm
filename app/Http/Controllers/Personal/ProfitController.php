@@ -17,7 +17,8 @@ class ProfitController extends Controller
     public function index()
     {
         return view('personal.thunhap',[
-            'moneys' => $this->userRelationCache('moneys')
+            'moneys' => $this->userRelationCache('moneys'),
+            'feedings' => $this->userRelationCache('feedings'),
         ]);
     }
 

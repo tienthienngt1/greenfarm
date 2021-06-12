@@ -38,7 +38,6 @@
 
         $(function() {
             $(document).pjax('a', '#body');
-            $(document).pjax('a', '#admin');
         })
         if ($.support.pjax) {
             $.pjax.defaults.timeout = 1000;
@@ -73,13 +72,28 @@
             </div>
         </div>
         @auth
+        @php
+        $notifibuys = \Cache::get('notifibuys');
+        $notifibuys = $notifibuys->sortByDesc('id');
+        $for = 0;
+        @endphp
+        @if(!$notifibuys->isEmpty())
         <div class="shadow mb-4 mt-4 p-2 general">
-            <marquee scrolldelay="200" onmouseover="this.stop()" onmouseout="this.start()">
-                <span class="mr-4">Chúc mừng bạn đã nhận nuôi thành công <span style="color:red">gà
-                        vườn</span></span><span class="mr-4">Chúc mừng bạn đã nhận nuôi thành công <span
-                        style="color:red">gà vườn</span></span>
+            <marquee scrolldelay="1" onmouseover="this.stop()" onmouseout="this.start()">
+        @foreach($notifibuys as $notifi)
+                <span class="mr-4">
+                Chúc mừng bạn <span style="color:red">{{$notifi -> name}}</span> đã nhận nuôi thành công <span style="color:red">{{$notifi->animal}}</span>!
+                </span>
+        @php 
+        $for++;
+        if($for >=3){
+            break;
+        }
+        @endphp
+        @endforeach
             </marquee>
         </div>
+        @endif
         <div class="mb-4 shadow d-flex align-items-center general" id="body" style="height: 60px;">
             <span class="" style="width: 20%;">
                 <center>

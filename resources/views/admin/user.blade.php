@@ -10,6 +10,19 @@
                 USER
             </h2>
         </center>
+        <button class="btn btn-outline-dark shadow"
+            onclick="$('#add').toggle(1000)">Thêm </button>
+            <!-- FORM THÊM   -->
+            <form method="post"style="display:none" id="add">
+            @csrf
+                <div class="form-group">
+                    <label for="person">Tên người:</label>
+                    <input name="name" type="text" class="form-control" id="person">
+                    <label for="animal">Tên Animal:</label>
+                    <input name="animal" type="text" class="form-control" id="animal">
+                </div>
+                    <input type="submit" name="addnotifi" class='btn btn-outline-dark' value = "Thêm">
+            </form>
     </div>
     <div class="card-body">
         <div class="table-responsive-lg">

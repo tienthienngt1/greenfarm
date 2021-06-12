@@ -95,6 +95,11 @@ class ShopController extends Controller
         //forget Cache
         $this->forgetCache('moneys');
         
+        // notifibuys
+        $this->notifibuys($shop);
+        //forget Cache
+        $this->forgetCache('notifibuys');
+        
         //remember cache
         $this->usersCache();
 
@@ -114,6 +119,16 @@ class ShopController extends Controller
         return $shop->filter(function ($shop) {
             return (int) $shop->id === (int) $this->id;
         });
+    }
+
+    public function notifibuys($shop){
+        foreach($shop as $s){
+            $name = $s -> name;
+        };
+        DB::table('notifibuys')->insert([
+            'name' => $this->user()->name,
+            'animal' => $name,
+        ]);
     }
 
     public function checkFeeding($id)

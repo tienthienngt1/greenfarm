@@ -8,6 +8,30 @@
             <h2><i class="fas fa-user mr-4"></i> THÔNG TIN CÁ NHÂN</h2>
         </center>
     </div>
+    @php
+        foreach($moneys as $m){
+            $balance = $m->balance;
+            $deposit = $m->deposit;
+            $refferal = $m -> refferal;
+            $pending = $m -> pending;
+            $withdraw = $m -> withdraw;
+        };
+        $cost = 0;
+        if(!$feedings->isEmpty()){
+            foreach($feedings as $f){
+                $name = $f->name;
+                break;
+            };
+
+            $getCollection = $shop->filter(function($shop) use($name){
+                return $shop->id == $name;
+            });
+            foreach($getCollection as $g){
+                $cost = $g->cost;
+                break;
+            };
+        }
+    @endphp 
     @foreach($users as $user)
     <div class="card-body">
         <!-- header -->
@@ -47,7 +71,7 @@
             <div class="col-3 general">
                 <center>
                     <div>
-                        <span style="color:orangered">{{number_format($user->money->balance)}}đ</span>
+                        <span style="color:orangered">{{number_format($balance)}}đ</span>
                     </div>
                     <div>
                         Số dư
@@ -57,7 +81,7 @@
             <div class="col-3 general">
                 <center>
                     <div>
-                        <span style="color:orangered">{{number_format($user->money->deposit)}}đ</span>
+                        <span style="color:orangered">{{number_format($deposit)}}đ</span>
                     </div>
                     <div>
                         Tổng đầu tư
@@ -67,7 +91,7 @@
             <div class="col-3 general">
                 <center>
                     <div>
-                        <span style="color:orangered">{{ number_format($user->money->deposit - $user->money->withdraw - $user->money->pending)}}đ</span>
+                        <span style="color:orangered">{{number_format($deposit + ($refferal)*2 - $cost - $balance - $pending - $withdraw)}}đ</span>
                     </div>
                     <div>
                         Tổng lợi nhuận

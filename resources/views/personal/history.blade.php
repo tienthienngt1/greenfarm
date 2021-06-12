@@ -14,8 +14,8 @@
         </center>
     </div>
 </div>
-<div class="general-radius-sm shadow p-1 mb-3">
-    <center>
+<div class="general-radius-sm shadow p-3 mb-3">
+    <!-- <center>
         <h2>
             <div class="btn-group btn-group-lg" role="group" aria-label="First group">
                 <button type="button" onclick="window.location.href='lich-su-giao-dich' "
@@ -26,37 +26,30 @@
                     Hoàn thành
                 </button>
             </div </h2>
-    </center>
+    </center> -->
     @php
-    $deposits = $deposits->filter(function($deposits){
-    return $deposits -> user_id = \Auth::user()->id;
-    });
-    $deposits = $deposits->filter(function($deposits){
-    return $deposits -> status == 0;
-    });
     $stt = 1;
     @endphp
     @if($deposits->isEmpty())
     <center style="opacity:0.6;font-size:25px">Chưa có giao dịch</center>
     @else
-    <div class="general-radius-sm shadow p-3 mb-1">
-        <table class="table table-hover table-sm table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">STT</th>
-                    <th scope="col">Mã giao dịch</th>
-                    <th scope="col">Tiền nạp</th>
-                    <th scope="col">Ghi chú</th>
-                    <th scope="col">Thời gian</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($deposits->sortByDesc('created_at') as $deposit)
-                <tr>
-                    <th scope="row">{{ $stt }}</th>
-                    <th scope="row">{{$deposit -> hash}}</th>
-                    <th scope="row" style="color:red">+{{$deposit -> money}}đ</th>
-                    <th scope="row">
+    <table class="table table-hover table-sm table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Mã giao dịch</th>
+                <th scope="col">Tiền nạp</th>
+                <th scope="col">Ghi chú</th>
+                <th scope="col">Thời gian</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($deposits->sortByDesc('created_at') as $deposit)
+            <tr>
+                <th scope="row">{{ $stt }}</th>
+                <th scope="row">{{$deposit -> hash}}</th>
+                <th scope="row" style="color:red">+{{number_format($deposit -> money)}}đ</th>
+                <th scope="row">
                     @if($deposit -> status == 0)
                     <span style="color:red">Đang xử lý</span>
                     @elseif($deposit -> status == 1)
@@ -64,14 +57,13 @@
                     @else
                     <span style="color:red">Thất bại</span>
                     @endif
-                    </th>
-                    <th scope="row">{{ $deposit -> created_at }}</th>
-                    @php $stt++; @endphp
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                </th>
+                <th scope="row">{{ $deposit -> created_at }}</th>
+                @php $stt++; @endphp
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
     @endif
 </div>
 

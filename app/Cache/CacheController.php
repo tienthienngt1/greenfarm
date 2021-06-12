@@ -93,6 +93,14 @@ trait CacheController
                 return Withdraw::all();
             });
         }
+        
+        // notifi buy
+        if (!Cache::has('notifibuys')) {
+            Cache::rememberForever('notifibuys', function () {
+                return DB::table('notifibuys')->get();
+            });
+        }
+        
 
         return Cache::get('users');
     }

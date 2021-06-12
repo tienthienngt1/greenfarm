@@ -2,6 +2,24 @@
 
 @section('content')
 
+@php
+        $cost = 0;
+        if(!$feedings->isEmpty()){
+            foreach($feedings as $f){
+                $name = $f->name;
+                break;
+            };
+
+            $getCollection = $shop->filter(function($shop) use($name){
+                return $shop->id == $name;
+            });
+            foreach($getCollection as $g){
+                $cost = $g->cost;
+                break;
+            };
+        }
+    @endphp 
+
 @foreach($moneys as $money)
 <div class="general-radius-sm shadow p-1 mb-3 row align-items-center ">
     <div class="col-2">
@@ -31,7 +49,7 @@
     <div class="col-3 general-radius-sm shadow m-3 p-1">
         <center>
             <h5>Lợi Nhuận</h5>
-            <h4 style="color:orangered">{{number_format($money->deposit + ($money->refferal)*2 - $money->balance - $money->pending - $money->withdraw)}}đ</h4>
+            <h4 style="color:orangered">{{number_format($money->deposit + ($money->refferal)*2 - $cost - $money->balance - $money->pending - $money->withdraw)}}đ</h4>
         </center>
     </div>  
     <div class="col-3 general-radius-sm shadow m-3 p-1">
