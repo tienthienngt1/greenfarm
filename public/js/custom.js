@@ -8,7 +8,8 @@ $(document).ready(function() {
 
     $(".select_money").on({
         click: function(){
-            $('#money').val($(this).val().replace(/,/g, ''));
+            $('#money1').val($(this).val().replace(/,/g, ''));
+            $('#money2').val($(this).val().replace(/,/g, ''));
         }
     })
     

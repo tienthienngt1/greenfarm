@@ -43,6 +43,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     
     // guide
     Route::view('huong-dan', 'guide.index');
-  });
-  
-Route::resource('/adminitration', '\App\Http\Controllers\Admin\AdminController')->only(['index', 'store'])->middleware('admin');
+   
+    //adminitration
+    Route::resource('/adminitration', '\App\Http\Controllers\Admin\AdminController')->only(['index', 'store'])->middleware('admin');
+});

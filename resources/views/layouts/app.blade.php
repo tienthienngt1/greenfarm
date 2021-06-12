@@ -79,7 +79,7 @@
         @endphp
         @if(!$notifibuys->isEmpty())
         <div class="shadow mb-4 mt-4 p-2 general">
-            <marquee scrolldelay="1" onmouseover="this.stop()" onmouseout="this.start()">
+            <marquee scrolldelay="50" onmouseover="this.stop()" onmouseout="this.start()">
         @foreach($notifibuys as $notifi)
                 <span class="mr-4">
                 Chúc mừng bạn <span style="color:red">{{$notifi -> name}}</span> đã nhận nuôi thành công <span style="color:red">{{$notifi->animal}}</span>!

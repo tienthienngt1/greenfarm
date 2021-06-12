@@ -58,15 +58,16 @@ $deposit = $deposits->filter(function($deposits){
             @csrf
             <div class="form-group mt-5">
                 <label for="money">Số tiền đã nạp:</label>
-                <input type="number" name="money" class="form-control" id="money" aria-describedby="Help" placeholder="Nhập số tiền đã nạp" required>
+                <input type="number" class="form-control" id="money1" aria-describedby="Help" placeholder="Nhập số tiền đã nạp" disabled required>
+                <input type="hidden" name="money" class="form-control" id="money2" aria-describedby="Help" placeholder="Nhập số tiền đã nạp">
                 <small id="Help" class="form-text text-muted">Số tiền nạp ít nhất là: <span style="color:red">85,688 vnđ</span></small>
                 <input class="btn btn-outline-dark select_money" type="button" value="85,688">
-                <input class="btn btn-outline-dark select_money" type="button" value="1,000,000">
+                <input class="btn btn-outline-dark select_money" type="button" value="549,094">
+                <input class="btn btn-outline-dark select_money" type="button" value="5,000,000">
                 <input class="btn btn-outline-dark select_money" type="button" value="1,200,052">
-                <input class="btn btn-outline-dark select_money" type="button" value="1,602,006">
                 <input class="btn btn-outline-dark select_money" type="button" value="2,500,094">
                 <input class="btn btn-outline-dark select_money" type="button" value="3,809,049">
-                <input class="btn btn-outline-dark select_money" type="button" value="5,000,000">
+                <input class="btn btn-outline-dark select_money" type="button" value="7,497,097">
                 <input class="btn btn-outline-dark select_money" type="button" value="15,098,005">
                 <input class="btn btn-outline-dark select_money" type="button" value="51,000,192">
                 <input class="btn btn-outline-dark select_money" type="button" value="80,502,013">
